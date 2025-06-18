@@ -66,7 +66,7 @@
     }
 
     .bloque {
-      background: white;
+      background: white;  /* Aquí está el cambio: fondo blanco */
       padding: 2em;
       border-radius: 10px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.15);
@@ -91,7 +91,6 @@
       margin-bottom: 0.5em;
     }
 
-    /* Para centrar los últimos dos bloques */
     .centrado-dos {
       display: flex;
       justify-content: center;
@@ -112,7 +111,6 @@
       padding: 1em;
     }
 
-    /* Juego */
     #juego {
       margin-top: 3em;
       background: #fff;
@@ -120,6 +118,7 @@
       border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       text-align: center;
+      position: relative;
     }
 
     #gameCanvas {
@@ -142,6 +141,15 @@
 
     .juego-btn:hover {
       background-color: #9575cd;
+    }
+
+    #vidas {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #9575cd;
     }
   </style>
 </head>
@@ -167,7 +175,6 @@
 
   <main>
     <div class="bloques-grid">
-      <!-- Eliminado bloque Home aquí -->
       <div class="bloque" id="sobre-mi" onclick="window.location.href='sobremi.html'">
         <span class="icono">👩</span>
         <h3>Sobre mí</h3>
@@ -180,9 +187,6 @@
         <span class="icono">📚</span>
         <h3>Tareas</h3>
       </div>
-    </div>
-
-    <div class="centrado-dos">
       <div class="bloque" id="quizzes" onclick="window.location.href='quizzes.html'">
         <span class="icono">❓</span>
         <h3>Quizzes</h3>
@@ -191,10 +195,18 @@
         <span class="icono">🎓</span>
         <h3>Proyecto Final</h3>
       </div>
+      <div class="bloque" id="github" onclick="window.open('https://github.com/hcarranza23', '_blank')">
+        <span class="icono">🐙</span>
+        <h3>Mi GitHub</h3>
+        <p style="font-weight:400; font-size:1rem; margin-top: 0.5em;">
+          Explora mis proyectos y contribuciones directamente en mi perfil de GitHub.
+        </p>
+      </div>
     </div>
 
     <section id="juego">
       <h2>🎮 Juego del Bloque</h2>
+      <div id="vidas">Vidas: 3</div>
       <canvas id="gameCanvas" width="800" height="200"></canvas>
       <p>Presiona la barra espaciadora para saltar</p>
       <button class="juego-btn" onclick="iniciarJuego()">▶️ Iniciar</button>
@@ -203,7 +215,7 @@
   </main>
 
   <footer>
-    <p>© Hecho por Hellen N. Carranza W. Todos los derechos reservados.| 2025</p>
+    <p> © Hecho por Hellen N. Carranza W. Todos los derechos reservados.| 2025</p>
   </footer>
 
   <script>
@@ -216,13 +228,22 @@
 
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
+    const vidasDisplay = document.getElementById("vidas");
 
-    let dino, cactus, gameOver, animacionActiva = false;
+    let dino, cactusArray, gameOver, animacionActiva, vidas;
 
     function iniciarValores() {
       dino = { x: 50, y: 150, width: 40, height: 40, vy: 0, jump: -10, gravity: 0.5, grounded: true };
-      cactus = { x: 800, y: 160, width: 20, height: 40 };
+      cactusArray = [];
+      let posX = 800;
+      for(let i=0; i<3; i++) {
+        cactusArray.push({ x: posX, y: 160, width: 20, height: 40 });
+        posX += 300 + Math.random()*200;
+      }
       gameOver = false;
+      animacionActiva = false;
+      vidas = 3;
+      vidasDisplay.textContent = "Vidas: " + vidas;
     }
 
     function dibujarDino() {
@@ -232,7 +253,9 @@
 
     function dibujarCactus() {
       ctx.fillStyle = "#616161";
-      ctx.fillRect(cactus.x, cactus.y, cactus.width, cactus.height);
+      for(let c of cactusArray){
+        ctx.fillRect(c.x, c.y, c.width, c.height);
+      }
     }
 
     function actualizar() {
@@ -248,20 +271,30 @@
         dino.grounded = true;
       }
 
-      cactus.x -= 5;
-      if (cactus.x + cactus.width < 0) {
-        cactus.x = 800 + Math.random() * 200;
+      for(let c of cactusArray) {
+        c.x -= 5;
+        if (c.x + c.width < 0) {
+          c.x = canvas.width + Math.random() * 200;
+        }
       }
 
-      if (
-        dino.x < cactus.x + cactus.width &&
-        dino.x + dino.width > cactus.x &&
-        dino.y + dino.height > cactus.y
-      ) {
-        gameOver = true;
-        animacionActiva = false;
-        alert("💀 ¡Game Over!");
-        return;
+      for(let c of cactusArray) {
+        if (
+          dino.x < c.x + c.width &&
+          dino.x + dino.width > c.x &&
+          dino.y + dino.height > c.y
+        ) {
+          vidas--;
+          vidasDisplay.textContent = "Vidas: " + vidas;
+          if (vidas <= 0) {
+            gameOver = true;
+            animacionActiva = false;
+            alert("💀 ¡Game Over! ");
+            return;
+          } else {
+            c.x = canvas.width + Math.random() * 200;
+          }
+        }
       }
 
       dibujarDino();
@@ -289,11 +322,12 @@
       }
     });
 
-    iniciarValores(); 
+    iniciarValores();
     ctx.fillStyle = "#9575cd";
     ctx.fillRect(50, 150, 40, 40);
   </script>
 </body>
 </html>
+
 
 
