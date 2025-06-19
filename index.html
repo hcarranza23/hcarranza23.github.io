@@ -66,7 +66,7 @@
     }
 
     .bloque {
-      background: white;  /* Aquí está el cambio: fondo blanco */
+      background: white;
       padding: 2em;
       border-radius: 10px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.15);
@@ -158,7 +158,7 @@
     <h1>🌟 Mi Portafolio</h1>
     <nav>
       <ul>
-        <li><a onclick="scrollToId('home')">🏠 Home</a></li>
+        <li><a href="index.html">🏠 Home</a></li>
         <li><a href="sobremi.html">👩 Sobre mí</a></li>
         <li><a href="laboratorios.html">🧪 Laboratorios</a></li>
         <li><a href="tareas.html">📚 Tareas</a></li>
@@ -170,7 +170,7 @@
   </header>
 
   <div class="buscador">
-    <input type="text" placeholder="🔍 Buscar contenido...">
+    <input type="text" placeholder="🔍 Buscar contenido..." id="buscador" onkeydown="buscar(event)">
   </div>
 
   <main>
@@ -325,8 +325,34 @@
     iniciarValores();
     ctx.fillStyle = "#9575cd";
     ctx.fillRect(50, 150, 40, 40);
+
+    // 🔍 FUNCIONALIDAD DE BÚSQUEDA
+    function buscar(event) {
+      if (event.key === 'Enter') {
+        const valor = document.getElementById('buscador').value.toLowerCase().trim();
+
+        if (valor.includes('laboratorio')) {
+          window.location.href = 'laboratorios.html';
+        } else if (valor.includes('tarea')) {
+          window.location.href = 'tareas.html';
+        } else if (valor.includes('quiz')) {
+          window.location.href = 'quizzes.html';
+        } else if (valor.includes('proyecto')) {
+          window.location.href = 'proyectofinal.html';
+        } else if (valor.includes('sobre')) {
+          window.location.href = 'sobremi.html';
+        } else if (valor.includes('github')) {
+          window.open('https://github.com/hcarranza23', '_blank');
+        } else if (valor.includes('inicio') || valor.includes('home')) {
+          scrollToId('home');
+        } else if (valor.includes('juego')) {
+          scrollToId('juego');
+        } else {
+          alert('❌ No se encontró coincidencia.');
+        }
+      }
+    }
   </script>
 </body>
 </html>
-
 
