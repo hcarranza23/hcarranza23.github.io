@@ -18,15 +18,17 @@
       </div>
       <nav>
         <ul class="nav-links">
+          <li><a href="#" onclick="mostrarSeccion('home')">Inicio</a></li>
           <li><a href="#" onclick="mostrarSeccion('about')">Sobre mí</a></li>
           <li><a href="#" onclick="mostrarSeccion('projects')">Proyectos</a></li>
+          <li><a href="#" onclick="mostrarSeccion('contact')">Contacto</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <!-- HERO -->
-  <section class="hero">
+  <section id="home" class="hero">
     <div class="container">
       <h2>Ingeniería Biomédica con propósito</h2>
       <p>Hola, soy <strong>Hellen Carranza</strong>. 
@@ -49,8 +51,6 @@
 Me interesa especialmente el desarrollo de soluciones tecnológicas en áreas como el diseño de dispositivos médicos, la ingeniería clínica, la imagenología, la telemedicina y la gestión hospitalaria. Me gusta mantenerme al día con los avances científicos y tecnológicos, y me involucro en proyectos que integren conocimiento técnico con un impacto real en la calidad del servicio de salud.
 
 Destaco por tener una actitud positiva, curiosa y adaptable, con disposición para seguir aprendiendo y asumir nuevos desafíos en el entorno profesional.
-
-
         </p>
       </div>
     </div>
@@ -67,9 +67,7 @@ Destaco por tener una actitud positiva, curiosa y adaptable, con disposición pa
         <img src="IMG/PHOTO-2025-07-12-20-22-02.jpg"  alt=Random Forest vs KNN" class="project-image" />
         <div class="project-header">
           <h3><span>🧠</span> Clasificación Inteligente de Imágenes con KNN y Random Forest</h3>
-          <div class="project-tags">
-            
-          </div>
+          <div class="project-tags"></div>
         </div>
         <p>
           Desarrollo de un modelo inteligente que clasifica imágenes biológicas y manuscritas utilizando algoritmos de aprendizaje supervisado. Se comparan Random Forest y KNN usando métricas de precisión, destacando su aplicación en medicina y diagnóstico asistido por IA.
@@ -82,9 +80,7 @@ Destaco por tener una actitud positiva, curiosa y adaptable, con disposición pa
         <img src="IMG/PHOTO-2025-07-12-20-19-24.jpg" alt="Predicción en Titanic Spaceship" class="project-image" />
         <div class="project-header">
           <h3><span>🚀</span> Predicción de Pasajeros en el Titanic Spaceship con ML</h3>
-          <div class="project-tags">
-            
-          </div>
+          <div class="project-tags"></div>
         </div>
         <p>
           Aplicación de modelos predictivos para determinar el destino de pasajeros en una simulación espacial. Se utilizaron árboles de decisión y técnicas de limpieza de datos, extrapolando su uso a predicción de eventos médicos críticos.
@@ -97,9 +93,7 @@ Destaco por tener una actitud positiva, curiosa y adaptable, con disposición pa
         <img src="IMG/PHOTO-2025-07-12-20-23-27.jpg" alt="Portafolio GitHub Pages" class="project-image" />
         <div class="project-header">
           <h3><span>💻</span> Creación de un Portafolio Web Profesional en GitHub</h3>
-          <div class="project-tags">
-          
-          </div>
+          <div class="project-tags"></div>
         </div>
         <p>
           Diseño y desarrollo de un portafolio profesional para Ingeniería Biomédica usando HTML, CSS y JS. Publicado mediante GitHub Pages y optimizado para mostrar proyectos académicos e investigaciones. Interactivo, responsivo y enfocado en impacto visual.
@@ -111,9 +105,8 @@ Destaco por tener una actitud positiva, curiosa y adaptable, con disposición pa
   </div>
 </section>
 
-
   <!-- CONTACTAR -->
-  <section id="contact" class="section contact visible">
+   <section id="contact" class="section contact visible">
     <div class="container">
       <h2>Contactar</h2>
       <form class="contact-form" id="contactForm">
@@ -149,6 +142,7 @@ Destaco por tener una actitud positiva, curiosa y adaptable, con disposición pa
     </div>
   </section>
 
+
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
@@ -157,7 +151,24 @@ Destaco por tener una actitud positiva, curiosa y adaptable, con disposición pa
   </footer>
 
   <script src="script.js"></script>
+
+  <!-- Script adicional solo para mostrar secciones -->
+  <script>
+    function mostrarSeccion(id) {
+      const secciones = document.querySelectorAll('.section');
+      secciones.forEach(seccion => {
+        seccion.classList.add('hidden');
+      });
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.remove('hidden');
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+
 </body>
 </html>
+
 
 
