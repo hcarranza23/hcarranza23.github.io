@@ -121,7 +121,13 @@ Destaco por tener una actitud positiva, curiosa y adaptable, con disposición pa
     <div class="project-tags"></div>
   </div>
   <p>
-    Desarrollé un modelo predictivo para estimar la cantidad de bicicletas alquiladas en función de variables climáticas y temporales. El proyecto incluyó limpieza de datos, análisis exploratorio (EDA), ingeniería de características y el uso de modelos para mejorar la precisión de las predicciones.
+    Este proyecto se trata de construir un "Clasificador Inteligente de Rayos X". En términos sencillos, el objetivo es crear un programa de inteligencia artificial capaz de analizar una radiografía de tórax e identificar automáticamente si el paciente está sano o si presenta alguna de las tres categorías de enfermedades: COVID-19, Neumonía o Normal.
+
+La forma en que se logra esto es bastante ingeniosa. En lugar de enseñarle al programa a reconocer las imágenes desde cero, se utiliza una técnica llamada "aprendizaje por transferencia". Esto es como si un estudiante de medicina ya tuviera una base sólida de conocimientos sobre el cuerpo humano y solo necesitara especializarse en un área específica. En este caso, se parte de un modelo pre-entrenado muy potente, llamado DenseNet121, que ya es un experto en reconocer patrones en imágenes de todo tipo. Sobre esta base, se añaden unas cuantas capas neuronales "personalizadas" que son las encargadas de aprender a diferenciar entre las distintas patologías que se ven en las radiografías.
+
+El proceso de entrenamiento no es solo mostrarle las imágenes al modelo una y otra vez. También se utiliza algo llamado "aumento de datos", que es como si el modelo viera cada radiografía desde ángulos ligeramente diferentes, con pequeños giros o acercamientos. Esto lo hace mucho más robusto y capaz de identificar correctamente las enfermedades, sin importar las pequeñas variaciones en las imágenes.
+
+Al final, este proyecto busca crear una herramienta de apoyo para los profesionales de la salud que podría ayudar a acelerar el diagnóstico y a tomar decisiones más informadas, mejorando la atención a los pacientes.
   </p>
   
   <a href="https://github.com/hcarranza23/IA-LAB-TAREA/blob/main/chestx.ipynb">Ver en GitHub</a>
@@ -135,7 +141,7 @@ Destaco por tener una actitud positiva, curiosa y adaptable, con disposición pa
     <div class="project-tags"></div>
   </div>
   <p>
-    Desarrollé un modelo predictivo para estimar la cantidad de bicicletas alquiladas en función de variables climáticas y temporales. El proyecto incluyó limpieza de datos, análisis exploratorio (EDA), ingeniería de características y el uso de modelos para mejorar la precisión de las predicciones.
+    En este trabajo se aplican métodos de análisis de datos junto con técnicas de aprendizaje no supervisado, en particular el algoritmo de agrupamiento K-Means, para segmentar recetas según sus propiedades nutricionales, categorías y tamaños de porción. El propósito es obtener una comprensión más profunda del catálogo de recetas de Tasty Bytes y facilitar el diseño de estrategias de contenido fundamentadas en datos. A través de este análisis, se lograron identificar cuatro grupos diferenciados de recetas, lo que permitió revelar patrones ocultos y establecer una base sólida para el desarrollo de predicciones futuras.
   </p>
   
   <a href="https://github.com/hcarranza23/IA-LAB-TAREA/tree/main/TAREA%203" target="_blank" class="project-btn">Ver en GitHub</a>
@@ -148,7 +154,7 @@ Destaco por tener una actitud positiva, curiosa y adaptable, con disposición pa
     <div class="project-tags"></div>
   </div>
   <p>
-    Desarrollé un modelo predictivo para estimar la cantidad de bicicletas alquiladas en función de variables climáticas y temporales. El proyecto incluyó limpieza de datos, análisis exploratorio (EDA), ingeniería de características y el uso de modelos para mejorar la precisión de las predicciones.
+El presente proyecto tiene como finalidad diseñar un sistema de detección de objetos especializado en la identificación de drones mediante el uso del algoritmo YOLOv5. Para ello, se optó por la versión mediana de YOLOv5, la cual ofrece un balance adecuado entre rapidez y exactitud en la detección. El dataset empleado proviene del Drone-dataset disponible en Kaggle, el cual fue cuidadosamente preprocesado y reducido a un total de 526 imágenes, distribuidas en un 70% para entrenamiento, un 10% para validación y un 20% para pruebas. El proceso completo incluye la instalación y configuración del entorno y dependencias, la preparación detallada del conjunto de datos, la visualización de ejemplos, el entrenamiento del modelo y, finalmente, la etapa de inferencia que pone a prueba la capacidad del sistema para reconocer drones en imágenes nuevas. Este método garantiza el desarrollo de un detector de drones eficiente y ajustado a las características específicas del problema.
   </p>
   
   <a href="https://github.com/hcarranza23/IA-LAB-TAREA/blob/main/LAB4-2.ipynb" target="_blank" class="project-btn">Ver en GitHub</a>
@@ -161,7 +167,7 @@ Destaco por tener una actitud positiva, curiosa y adaptable, con disposición pa
     <div class="project-tags"></div>
   </div>
   <p>
-    Desarrollé un modelo predictivo para estimar la cantidad de bicicletas alquiladas en función de variables climáticas y temporales. El proyecto incluyó limpieza de datos, análisis exploratorio (EDA), ingeniería de características y el uso de modelos para mejorar la precisión de las predicciones.
+   Este proyecto se basa en la aplicación de la técnica de Transfer Learning, una metodología clave en el campo del aprendizaje profundo que facilita la solución de problemas de clasificación de imágenes cuando se cuenta con conjuntos de datos limitados. Se emplean modelos previamente entrenados en la base de datos ImageNet, enfocándose en EfficientNetV2-B0, para aprovechar las representaciones jerárquicas ya aprendidas por el modelo. El proceso consiste en cargar el modelo sin la capa final de clasificación, agregar nuevas capas diseñadas para el problema específico y entrenar únicamente estas últimas, manteniendo congeladas las capas convolucionales originales. Esta estrategia contribuye a acelerar el entrenamiento y a mejorar el desempeño, sobre todo en escenarios con pocos datos disponibles. Además, se destaca la utilización de ImageDataGenerator para realizar aumentos y normalización de datos, lo que favorece la calidad y variedad del conjunto de entrenamiento.
   </p>
   
   <a href="https://github.com/hcarranza23/IA-LAB-TAREA/blob/main/TAREA4IA4.ipynb" target="_blank" class="project-btn">Ver en GitHub</a>
